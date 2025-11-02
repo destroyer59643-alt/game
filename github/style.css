@@ -1,0 +1,74 @@
+/* 8-bit aesthetic, tabbed layout with pagination control */
+body{
+  font-family: "Press Start 2P", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  margin:0;
+  background:#0f1724;
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* container */
+#app{max-width:980px;margin:20px auto;padding:18px 18px 90px 18px;background:#081226;border-radius:8px;border:4px solid #081b34}
+header{display:flex;justify-content:space-between;align-items:center}
+.top-stats span{margin-left:12px;font-weight:700}
+
+/* main screens area: screens show/hide by .active */
+main{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:18px}
+.screen{display:none;background:#071226;padding:12px;border-radius:6px;border:1px solid rgba(255,255,255,.04)}
+.screen.active{display:block}
+
+/* run screen layout */
+#monster-and-controls{display:flex;flex-direction:column;gap:8px;align-items:center}
+#monster-row{display:flex;gap:12px;align-items:center}
+#monster-area{display:flex;justify-content:center;align-items:center;padding:6px 0}
+#monster{width:84px;height:84px;display:grid;grid-template-rows: repeat(7, 1fr);gap:0;image-rendering: pixelated;position:relative;border:4px solid #071226}
+
+/* player */
+#player-area{display:flex;flex-direction:column;align-items:center;gap:6px}
+#player-portrait{width:220px;height:64px;background:#09101b;border:4px solid #071226;position:relative;overflow:hidden;border-radius:6px}
+#player-runner{width:16px;height:20px;background:#ffd166;position:absolute;left:0;bottom:12px;border:2px solid #000;box-sizing:border-box;transition:left 350ms linear}
+#player-bar{width:220px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.bar-label{font-size:11px;color:#b8c7e6;font-weight:700}
+.bar-bg{width:220px;height:12px;background:#051026;border-radius:6px;border:1px solid rgba(255,255,255,0.03);overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#2ec4b6,#7ec8ff);width:100%}
+
+/* upgrades list & items list */
+.upgrade{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.02)}
+.controls{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+#items-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.item-row{display:flex;justify-content:space-between;align-items:center;padding:8px;background:#06111c;border-radius:6px;border:1px solid rgba(255,255,255,0.03)}
+.item-meta{display:flex;flex-direction:column}
+.item-actions button{padding:6px 8px}
+
+/* pagination control */
+#level-pagination{display:flex;gap:6px;align-items:center}
+.page-btn{background:#0b1524;color:#e6eef8;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:6px;cursor:pointer;font-weight:800}
+.page-btn.current{outline:3px solid #ffd166}
+.page-ellipsis{color:#88a0c6;font-weight:700;padding:0 6px}
+
+/* popup container */
+#popup-container{position:fixed;right:20px;top:20px;display:flex;flex-direction:column;gap:8px;z-index:2000}
+.popup{background: rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);padding:8px 12px;color:#e6eef8;border-radius:8px;font-weight:700;font-size:12px;min-width:160px;box-shadow: 0 6px 18px rgba(0,0,0,0.6);}
+
+/* bottom tab bar */
+#tab-bar{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:12px;
+  display:flex;
+  gap:8px;
+  background:rgba(10,18,30,0.98);
+  padding:8px;border-radius:12px;border:2px solid rgba(255,255,255,0.04);z-index:3000;
+}
+.tab-button{background:#0b1524;color:#e6eef8;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:800}
+.tab-button.active{outline:3px solid #ffd166}
+
+/* responsive: on small screens main becomes single column, tab bar stretches */
+@media (max-width:820px){
+  main{grid-template-columns:1fr; padding-bottom:120px}
+  #tab-bar{left:8px; right:8px; transform:none; bottom:12px; justify-content:space-between}
+  #app{padding-bottom:140px}
+  #player-portrait,#player-bar{width:100%}
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Idle-Time Knight — Tabs (Run / Upgrades / Items)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Idle-Time Knight — 8‑bit</h1>
+      <div class="top-stats">
+        <span id="gold">Gold: 0</span>
+        <span id="passive">Passive/sec: 0</span>
+        <span id="prestige">Prestige: 0</span>
+      </div>
+    </header>
+
+    <main id="main-area">
+      <!-- RUN SCREEN -->
+      <section id="screen-run" class="screen active">
+        <h2>Active Run</h2>
+        <div id="run-info">
+          <div>Level: <span id="level-num">1</span></div>
+          <div>Time Left: <span id="time-left">10</span>s</div>
+          <div>Enemy HP: <span id="enemy-hp">10</span></div>
+          <div>Run Bonus: <span id="run-bonus">1.00x</span></div>
+        </div>
+
+        <div id="monster-and-controls">
+          <div id="monster-row">
+            <div id="monster-area">
+              <div id="monster" class="monster style-1"></div>
+            </div>
+
+            <div id="player-area">
+              <div id="player-portrait">
+                <div id="player-runner"></div>
+              </div>
+              <div id="player-bar">
+                <div class="bar-label">HP: <span id="player-hp-text">20/20</span></div>
+                <div class="bar-bg"><div id="player-hp-bar" class="bar-fill"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="hero-controls">
+            <button id="attack-btn">Attack</button>
+            <button id="start-run-btn">Start Run</button>
+          </div>
+
+          <div id="level-controls">
+            <button id="prev-level-btn">◀ Prev</button>
+            <div id="level-pagination"></div>
+            <button id="next-level-btn">Next ▶</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UPGRADES SCREEN -->
+      <section id="screen-upgrades" class="screen">
+        <h2>Upgrades</h2>
+
+        <div class="upgrade">
+          <div class="meta">
+            <strong>Auto Squire</strong>
+            <div>Gives passive gold/sec</div>
+          </div>
+          <div class="controls">
+            <div>Cost: <span id="cost-auto">10</span></div>
+            <button id="buy-auto">Buy</button>
+            <div>Owned: <span id="own-auto">0</span></div>
+          </div>
+        </div>
+
+        <div class="upgrade">
+          <div class="meta">
+            <strong>Sharper Sword</strong>
+            <div>Increases click power</div>
+          </div>
+          <div class="controls">
+            <div>Cost: <span id="cost-sword">15</span></div>
+            <button id="buy-sword">Buy</button>
+            <div>Owned: <span id="own-sword">0</span></div>
+          </div>
+        </div>
+
+        <div class="upgrade">
+          <div class="meta">
+            <strong>Health Upgrade</strong>
+            <div>Increase your max HP permanently</div>
+          </div>
+          <div class="controls">
+            <div>Cost: <span id="cost-health">80</span></div>
+            <button id="buy-health">Buy</button>
+            <div>Owned: <span id="own-health">0</span></div>
+          </div>
+        </div>
+
+        <div class="upgrade">
+          <div class="meta">
+            <strong>Squire Strike</strong>
+            <div>Auto-attack while in runs. Starts 1 hit / 10s. Each purchase halves interval (to a limit).</div>
+          </div>
+          <div class="controls">
+            <div>Cost: <span id="cost-strike">50</span></div>
+            <button id="buy-strike">Buy</button>
+            <div>Owned: <span id="own-strike">0</span></div>
+          </div>
+        </div>
+
+        <div class="upgrade">
+          <div class="meta">
+            <strong>Dodge Chance</strong>
+            <div>Very expensive. Each purchase grants +1% dodge chance vs enemy attacks.</div>
+          </div>
+          <div class="controls">
+            <div>Cost: <span id="cost-dodge">1000</span></div>
+            <button id="buy-dodge">Buy</button>
+            <div>Owned: <span id="own-dodge">0</span> — Chance: <span id="dodge-chance">0%</span></div>
+          </div>
+        </div>
+
+        <div class="upgrade">
+          <button id="prestige-btn">Ascend (Prestige)</button>
+        </div>
+      </section>
+
+      <!-- ITEMS SCREEN -->
+      <section id="screen-items" class="screen">
+        <h2>Items & Inventory</h2>
+        <div id="items-list"></div>
+        <div style="margin-top:10px"><button id="open-inventory-btn">Refresh Inventory</button></div>
+      </section>
+
+      <!-- (Log hidden) -->
+    </main>
+
+    <!-- bottom tab bar -->
+    <nav id="tab-bar">
+      <button class="tab-button active" data-screen="screen-run">Run</button>
+      <button class="tab-button" data-screen="screen-upgrades">Upgrades</button>
+      <button class="tab-button" data-screen="screen-items">Items</button>
+    </nav>
+
+    <div id="popup-container"></div>
+
+    <footer>
+      <small>Prototype — pagination level selector and tabs updated.</small>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
